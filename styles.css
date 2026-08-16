@@ -1,0 +1,332 @@
+/* ============================================================
+   Noah Turner — Classics — site stylesheet
+   A quiet scriptorium: vellum ground, rubricated rules,
+   an illuminated initial, and a scribe's colophon on each leaf.
+   ============================================================ */
+
+:root {
+  --ink: #201d17;
+  --ink-soft: #4a4438;
+  --vellum: #ece2c6;
+  --vellum-deep: #e2d5ae;
+  --gilt: #93711f;
+  --gilt-bright: #b08a2c;
+  --rubric: #7a2530;
+  --bay: #47533b;
+  --line: #c7b686;
+  --line-faint: #d9cca0;
+  --max-w: 700px;
+  --serif-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --serif-body: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--vellum);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.35), transparent 55%),
+    radial-gradient(ellipse at 85% 90%, rgba(147,113,31,0.08), transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(74,68,56,0.025) 0px,
+      rgba(74,68,56,0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 19px;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--rubric);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--gilt-bright); }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gilt-bright);
+  outline-offset: 3px;
+}
+
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3.2rem 1.5rem 2rem;
+}
+
+/* ---------- Header / masthead ---------- */
+
+.masthead {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.masthead .eyebrow {
+  display: block;
+  font-family: var(--serif-body);
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  color: var(--gilt);
+  margin-bottom: 0.6rem;
+}
+
+.masthead h1 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  letter-spacing: 0.01em;
+  margin: 0 0 0.35rem;
+  color: var(--ink);
+}
+
+.masthead .tagline {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Ornamental rule with center fleuron */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.6rem 0;
+  color: var(--gilt);
+}
+.rule::before,
+.rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), var(--line), transparent);
+}
+.rule .fleuron {
+  font-size: 1rem;
+  transform: translateY(-1px);
+}
+
+/* ---------- Nav ---------- */
+
+nav.wayfinder {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  margin-bottom: 2.6rem;
+}
+nav.wayfinder a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+nav.wayfinder a:hover,
+nav.wayfinder a[aria-current="page"] {
+  color: var(--rubric);
+  border-bottom-color: var(--rubric);
+}
+
+/* ---------- Content card ---------- */
+
+.leaf {
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 2.4rem clamp(1.4rem, 5vw, 3rem);
+  position: relative;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 12px 30px -18px rgba(32,29,23,0.35);
+}
+.leaf::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--line-faint);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ---------- Drop cap (illuminated initial) ---------- */
+
+.drop p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 3.6rem;
+  line-height: 0.78;
+  padding: 0.06em 0.1em 0 0;
+  color: var(--rubric);
+  text-shadow: 1px 1px 0 rgba(147,113,31,0.35);
+}
+
+/* ---------- Section headings ---------- */
+
+h2.section-head {
+  font-family: var(--serif-body);
+  font-variant: small-caps;
+  letter-spacing: 0.09em;
+  font-size: 1.15rem;
+  color: var(--rubric);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.4rem;
+  margin: 2.4rem 0 1.1rem;
+}
+h2.section-head:first-of-type { margin-top: 0.4rem; }
+
+h3.entry-title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0 0 0.1rem;
+  color: var(--ink);
+}
+
+.entry {
+  margin-bottom: 1.4rem;
+}
+
+.entry-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin-bottom: 0.35rem;
+}
+
+.entry ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+}
+.entry li { margin-bottom: 0.3rem; }
+
+/* ---------- Contact block ---------- */
+
+.contact-card {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.35);
+  padding: 1.4rem 1.6rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.55rem 0;
+}
+.contact-row + .contact-row {
+  border-top: 1px solid var(--line-faint);
+}
+.contact-row svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--gilt);
+}
+.contact-row a,
+.contact-row span.plain {
+  font-size: 1.02rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.contact-row a:hover { color: var(--rubric); text-decoration: underline; }
+
+/* ---------- Skills / tag list ---------- */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+  margin-top: 0.4rem;
+}
+.tag {
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 0.92rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.2rem 0.65rem;
+  color: var(--ink-soft);
+  background: rgba(255,255,255,0.4);
+}
+
+.download-line {
+  text-align: center;
+  margin: 1.6rem 0 0.4rem;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 0.98rem;
+}
+.download-line a {
+  border: 1px solid var(--rubric);
+  padding: 0.5rem 1.3rem;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+}
+.download-line a:hover {
+  background: var(--rubric);
+  color: var(--vellum);
+}
+
+/* ---------- Colophon (footer) ---------- */
+
+footer.colophon {
+  max-width: var(--max-w);
+  margin: 2.6rem auto 0;
+  padding: 0 1.5rem 3rem;
+  text-align: center;
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+footer.colophon .glyph {
+  display: block;
+  color: var(--gilt);
+  font-style: normal;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 520px) {
+  body { font-size: 17.5px; }
+  .leaf { padding: 1.8rem 1.2rem; }
+  nav.wayfinder { gap: 1.1rem; font-size: 0.88rem; }
+  .entry-meta { flex-direction: column; gap: 0.15rem; }
+}
+
+/* ---------- Print (CV page) ---------- */
+
+@media print {
+  body { background: #fff; }
+  .leaf { box-shadow: none; border: none; }
+  .leaf::before { display: none; }
+  nav.wayfinder, .download-line, footer.colophon { display: none; }
+}
