@@ -313,6 +313,22 @@ footer.colophon .glyph {
   margin-bottom: 0.4rem;
 }
 
+footer.colophon .elsewhere {
+  display: block;
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+footer.colophon .elsewhere a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+}
+footer.colophon .elsewhere a:hover {
+  color: var(--rubric);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 520px) {
